@@ -106,7 +106,7 @@ export default function CouponCard({ coupon }) {
             <span className="brand-name">{coupon.brand}</span>
           </div>
 
-          <div style={{ display: 'flex', gap: '0.4rem' }}>
+          <div className="coupon-badge-group" style={{ display: 'flex', gap: '0.4rem' }}>
             <span className="badge badge-discount">{coupon.discount_type}</span>
             {coupon.verified && (
               <span className="badge badge-verified" style={{ display: 'flex', alignItems: 'center', gap: '0.15rem' }}>
