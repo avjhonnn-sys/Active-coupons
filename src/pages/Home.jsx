@@ -75,7 +75,7 @@ export default function Home() {
         gap: '1rem'
       }}>
         <h1 className="glow-text" style={{
-          fontSize: '3.5rem',
+          fontSize: 'clamp(2rem, 8vw, 3.5rem)',
           lineHeight: '1.1',
           background: 'linear-gradient(to right, #fff, var(--text-secondary), var(--accent))',
           WebkitBackgroundClip: 'text',
@@ -86,7 +86,7 @@ export default function Home() {
         </h1>
         <p style={{
           color: 'var(--text-secondary)',
-          fontSize: '1.25rem',
+          fontSize: 'clamp(1rem, 4vw, 1.25rem)',
           maxWidth: '600px',
           lineHeight: '1.6'
         }}>
@@ -121,12 +121,15 @@ export default function Home() {
         }}>
           Shop by Featured Brands
         </h2>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(110px, 1fr))',
-          gap: '1.5rem',
-          justifyContent: 'center'
-        }}>
+        <div 
+          className="brand-badge-grid"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(110px, 1fr))',
+            gap: '1.5rem',
+            justifyContent: 'center'
+          }}
+        >
           {BRANDS.map(brand => {
             const color = BRAND_COLORS[brand] || 'var(--accent)';
             const activeCount = coupons.filter(
@@ -246,11 +249,14 @@ export default function Home() {
                 Active Coupon Codes & Deals ({filteredCoupons.length})
               </h2>
             </div>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-              gap: '2rem'
-            }}>
+            <div 
+              className="coupons-grid"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+                gap: '2rem'
+              }}
+            >
               {filteredCoupons.map(coupon => (
                 <CouponCard key={coupon.id} coupon={coupon} />
               ))}

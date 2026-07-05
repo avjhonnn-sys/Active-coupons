@@ -821,3 +821,127 @@ body.light-theme .ticker-wrap {
   }
 }
 
+/* Responsive Navbar Hamburger layout styles */
+.hamburger-btn {
+  display: none;
+}
+.nav-links-container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .hamburger-btn {
+    display: flex !important;
+  }
+  .nav-links-container {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem;
+    gap: 1.5rem;
+    z-index: 99;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border-radius: 0 0 1rem 1rem;
+  }
+  .nav-links-container.open {
+    display: flex !important;
+  }
+  .nav-dropdown-menu {
+    position: static !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid var(--border) !important;
+    margin-top: 0.5rem;
+    padding: 0.5rem !important;
+  }
+  .nav-admin-group {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 0.75rem !important;
+  }
+  .nav-admin-group .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+/* Global Prevent Horizontal Overflow & Scaling */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Touch Target Size Rules */
+button, 
+a.btn, 
+.brand-card-link,
+.btn-no-code,
+.btn-copy-code {
+  min-height: 44px;
+}
+
+select, 
+input {
+  min-height: 44px;
+}
+
+/* Responsive grids scaling */
+@media (max-width: 640px) {
+  .brand-badge-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+  }
+
+  .coupons-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
+
+  .modal-card {
+    width: 92vw !important;
+    margin: 1.5rem auto !important;
+    padding: 1.25rem !important;
+    max-height: 85vh !important;
+  }
+
+  .admin-table-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-top: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+  }
+}
+
+/* Responsive spacing for mobile container */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+}
+
+

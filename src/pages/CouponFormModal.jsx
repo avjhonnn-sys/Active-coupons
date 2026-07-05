@@ -233,7 +233,7 @@ export default function CouponFormModal({ isOpen, onClose, onSave, couponToEdit 
           </div>
 
           {/* Toggles */}
-          <div style={{ display: 'flex', gap: '2.5rem', marginTop: '0.25rem' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem 2.5rem', marginTop: '0.25rem' }}>
             {/* Verified Toggle */}
             <div 
               className={`toggle-wrapper ${verified ? 'active' : ''}`}

@@ -352,7 +352,7 @@ export default function BrandDetail() {
               Loading coupons...
             </div>
           ) : filteredCoupons.length > 0 ? (
-            <div style={{
+            <div className="coupons-grid" style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
               gap: '2rem'

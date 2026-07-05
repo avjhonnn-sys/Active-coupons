@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Ticket, ChevronDown, ShieldCheck, Sun, Moon } from 'lucide-react';
+import { Ticket, ChevronDown, ShieldCheck, Sun, Moon, Menu, X } from 'lucide-react';
 import { BRANDS, isUsingMock, db } from '../supabase';
 
 export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState(localStorage.getItem('activecoupons_theme') || 'dark');
   const navigate = useNavigate();
 
@@ -33,6 +34,7 @@ export default function Navbar() {
     try {
       await db.logout();
       setIsAdmin(false);
+      setMenuOpen(false);
       navigate('/');
     } catch (err) {
       console.error('Logout error:', err.message);
@@ -50,7 +52,7 @@ export default function Navbar() {
       borderRadius: '0 0 1rem 1rem',
       position: 'sticky',
       top: 0,
-      zIndex: 50,
+      zIndex: 100,
       borderTop: 'none',
       borderLeft: 'none',
       borderRight: 'none',
@@ -59,10 +61,11 @@ export default function Navbar() {
       <div className="container" style={{
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        position: 'relative'
       }}>
         {/* Logo */}
-        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, fontSize: '1.5rem', color: 'var(--text-primary)' }}>
+        <Link to="/" onClick={() => setMenuOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, fontSize: '1.5rem', color: 'var(--text-primary)' }}>
           <div style={{
             background: 'var(--accent)',
             padding: '0.4rem',
@@ -79,10 +82,11 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* Links */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+        {/* Links & Menu Items Container */}
+        <div className={`nav-links-container ${menuOpen ? 'open' : ''}`}>
+          
           {/* Brands Dropdown */}
-          <div style={{ position: 'relative' }}>
+          <div className="nav-dropdown-wrapper" style={{ position: 'relative' }}>
             <button 
               onClick={() => setDropdownOpen(!dropdownOpen)}
               onBlur={() => setTimeout(() => setDropdownOpen(false), 200)}
@@ -96,14 +100,17 @@ export default function Navbar() {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.25rem',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                width: '100%',
+                justifyContent: 'space-between'
               }}
             >
-              Brands <ChevronDown size={16} style={{ transform: dropdownOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
+              <span>Brands</span> 
+              <ChevronDown size={16} style={{ transform: dropdownOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
             </button>
 
             {dropdownOpen && (
-              <div className="glass-panel" style={{
+              <div className="glass-panel nav-dropdown-menu" style={{
                 position: 'absolute',
                 top: 'calc(100% + 0.75rem)',
                 right: 0,
@@ -120,6 +127,7 @@ export default function Navbar() {
                   <Link 
                     key={brand} 
                     to={`/brand/${brand.toLowerCase()}-coupons`}
+                    onClick={() => { setDropdownOpen(false); setMenuOpen(false); }}
                     style={{
                       padding: '0.5rem 0.75rem',
                       borderRadius: '0.35rem',
@@ -174,8 +182,8 @@ export default function Navbar() {
 
           {/* Admin Navigation (Only visible when logged in) */}
           {isAdmin && (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-              <Link to="/admin/dashboard" className="btn btn-secondary" style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem' }}>
+            <div className="nav-admin-group" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+              <Link to="/admin/dashboard" onClick={() => setMenuOpen(false)} className="btn btn-secondary" style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem' }}>
                 <ShieldCheck size={16} /> Dashboard
               </Link>
               <button onClick={handleLogout} className="btn btn-danger" style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem' }}>
@@ -191,12 +199,33 @@ export default function Navbar() {
               fontSize: '0.65rem', 
               background: isUsingMock ? 'rgba(245, 158, 11, 0.1)' : 'rgba(16, 185, 129, 0.1)', 
               color: isUsingMock ? 'var(--warning)' : 'var(--success)',
-              border: `1px solid ${isUsingMock ? 'rgba(245, 158, 11, 0.2)' : 'rgba(16, 185, 129, 0.2)'}`
+              border: `1px solid ${isUsingMock ? 'rgba(245, 158, 11, 0.2)' : 'rgba(16, 185, 129, 0.2)'}`,
+              alignSelf: 'center'
             }}
           >
             {isUsingMock ? 'Mock Storage' : 'Supabase Live'}
           </span>
         </div>
+
+        {/* Hamburger Menu Toggle Button (visible on mobile) */}
+        <button 
+          className="hamburger-btn" 
+          onClick={() => setMenuOpen(!menuOpen)}
+          style={{
+            background: 'none',
+            border: 'none',
+            color: 'var(--text-primary)',
+            cursor: 'pointer',
+            padding: '0.5rem',
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: '0.35rem',
+            border: '1px solid var(--border)'
+          }}
+          aria-label="Toggle navigation menu"
+        >
+          {menuOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
       </div>
     </nav>
   );
