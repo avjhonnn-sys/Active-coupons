@@ -47,6 +47,10 @@ export default function Home() {
     fetchCoupons();
   }, []);
 
+  useEffect(() => {
+    document.title = 'GrabCoupon - Real Deals. Real Savings. Every Day.';
+  }, []);
+
   // Filter logic
   const filteredCoupons = coupons.filter(coupon => {
     const matchesSearch = 

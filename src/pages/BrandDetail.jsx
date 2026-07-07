@@ -31,11 +31,11 @@ const BRAND_DESCRIPTIONS = {
 };
 
 const getFaqDefaults = (brandName) => ({
-  how_to_use: `Copy the coupon code from ActiveCoupons, go to the ${brandName} website or app, add your items to the cart, paste the code in the promo/coupon box during checkout, and click apply.`,
+  how_to_use: `Copy the coupon code from GrabCoupon, go to the ${brandName} website or app, add your items to the cart, paste the code in the promo/coupon box during checkout, and click apply.`,
   not_working: `Coupon codes can fail because they have expired, are restricted to specific items, require a minimum spending threshold, or are only valid for first-time customers. Double check the terms on our page.`,
   verified: `Yes! We manually check and verify our coupon codes. Look for the green "Verified" badge on the coupon cards which indicates our editors have verified this code recently.`,
   frequency: `We update our website daily with active promo codes. Keep checking back regularly to get the latest ${brandName} savings.`,
-  affiliation: `No, ActiveCoupons is an independent coupon site. We are not officially affiliated with, endorsed by, or partnered with ${brandName}. All trademarks belong to their respective owners.`
+  affiliation: `No, GrabCoupon is an independent coupon site. We are not officially affiliated with, endorsed by, or partnered with ${brandName}. All trademarks belong to their respective owners.`
 });
 
 // FAQ Accordion Row Component
@@ -118,7 +118,7 @@ export default function BrandDetail() {
   // Dynamic SEO Titles and Meta Description tag
   useEffect(() => {
     if (formattedBrand) {
-      document.title = `${formattedBrand} Coupons & Promo Codes - Verified Deals | ActiveCoupons`;
+      document.title = `${formattedBrand} Coupons & Promo Codes - Verified Deals | GrabCoupon`;
       
       let metaDesc = document.querySelector('meta[name="description"]');
       if (!metaDesc) {
@@ -126,7 +126,7 @@ export default function BrandDetail() {
         metaDesc.setAttribute('name', 'description');
         document.head.appendChild(metaDesc);
       }
-      metaDesc.setAttribute('content', `Get the latest verified ${formattedBrand} coupons, promo codes, and discount offers. Shop and save today with ActiveCoupons.`);
+      metaDesc.setAttribute('content', `Get the latest verified ${formattedBrand} coupons, promo codes, and discount offers. Shop and save today with GrabCoupon.`);
     }
   }, [formattedBrand]);
 
@@ -217,7 +217,7 @@ export default function BrandDetail() {
       a: faqOverrides.frequency || faqDefaults.frequency
     },
     {
-      q: `Is ActiveCoupons officially affiliated with ${formattedBrand}?`,
+      q: `Is GrabCoupon officially affiliated with ${formattedBrand}?`,
       a: faqOverrides.affiliation || faqDefaults.affiliation
     }
   ];
@@ -409,7 +409,7 @@ export default function BrandDetail() {
               lineHeight: '1.6'
             }}>
               A coupon code is an alphanumeric string offered by retailers to give shoppers instant savings at checkout. 
-              To redeem one of our {formattedBrand} deals, simply click the copy code button on the card. ActiveCoupons will copy 
+              To redeem one of our {formattedBrand} deals, simply click the copy code button on the card. GrabCoupon will copy 
               the discount code to your clipboard and open the official {formattedBrand} store in a new tab. Paste the copied code into 
               the promotional field on the payment step to apply the discount. For no-code deals, click 'Activate Offer' to go directly 
               to the promotional landing page where the discount will already be applied.

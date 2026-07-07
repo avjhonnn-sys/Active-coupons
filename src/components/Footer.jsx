@@ -35,7 +35,7 @@ export default function Footer() {
               }}>
                 <Ticket size={18} style={{ transform: 'rotate(-10deg)', color: '#fff' }} />
               </div>
-              <span style={{ fontFamily: 'var(--font-headings)' }}>ActiveCoupons</span>
+              <span style={{ fontFamily: 'var(--font-headings)' }}>GrabCoupon</span>
             </div>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: '1.6' }}>
               Your premier destination for verified discount codes, coupons, and promo codes from top brands. Shop smart, save more.
@@ -74,7 +74,7 @@ export default function Footer() {
           color: 'var(--text-secondary)',
           gap: '1rem'
         }}>
-          <span>&copy; {currentYear} ActiveCoupons. All rights reserved. Independently run.</span>
+          <span>&copy; {currentYear} GrabCoupon. All rights reserved. Independently run.</span>
           <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
             Created with passion to help you save money.
           </span>

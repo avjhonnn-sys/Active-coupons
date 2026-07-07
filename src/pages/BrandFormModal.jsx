@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { X, Save, AlertCircle, HelpCircle } from 'lucide-react';
 
 const getDefaults = (brandName) => ({
-  how_to_use: `Copy the coupon code from ActiveCoupons, go to the ${brandName} website or app, add your items to the cart, paste the code in the promo/coupon box during checkout, and click apply.`,
+  how_to_use: `Copy the coupon code from GrabCoupon, go to the ${brandName} website or app, add your items to the cart, paste the code in the promo/coupon box during checkout, and click apply.`,
   not_working: `Coupon codes can fail because they have expired, are restricted to specific items, require a minimum spending threshold, or are only valid for first-time customers. Double check the terms on our page.`,
   verified: `Yes! We manually check and verify our coupon codes. Look for the green "Verified" badge on the coupon cards which indicates our editors have verified this code recently.`,
   frequency: `We update our website daily with active promo codes. Keep checking back regularly to get the latest ${brandName} savings.`,
-  affiliation: `No, ActiveCoupons is an independent coupon site. We are not officially affiliated with, endorsed by, or partnered with ${brandName}. All trademarks belong to their respective owners.`
+  affiliation: `No, GrabCoupon is an independent coupon site. We are not officially affiliated with, endorsed by, or partnered with ${brandName}. All trademarks belong to their respective owners.`
 });
 
 export default function BrandFormModal({ isOpen, onClose, onSave, brand }) {
@@ -160,7 +160,7 @@ export default function BrandFormModal({ isOpen, onClose, onSave, brand }) {
               FAQ Answers Custom Overrides
             </h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.8rem', marginBottom: '1.25rem', lineHeight: '1.4' }}>
-              Override default answers. Leave these blank to use the generic ActiveCoupons fallback answers for this brand.
+              Override default answers. Leave these blank to use the generic GrabCoupon fallback answers for this brand.
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -231,7 +231,7 @@ export default function BrandFormModal({ isOpen, onClose, onSave, brand }) {
               {/* FAQ 5 */}
               <div className="form-group">
                 <label className="form-label" htmlFor="faqAffiliation">
-                  Is ActiveCoupons officially affiliated with {brand.brand_name}?
+                  Is GrabCoupon officially affiliated with {brand.brand_name}?
                 </label>
                 <textarea 
                   id="faqAffiliation"

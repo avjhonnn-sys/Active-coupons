@@ -200,7 +200,7 @@ export default function AdminDashboard() {
           <div>
             <h1 style={{ fontSize: '1.75rem', color: 'var(--text-primary)' }}>Admin Dashboard</h1>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
-              Manage ActiveCoupons live brand coupons and deals
+              Manage GrabCoupon live brand coupons and deals
             </p>
           </div>
         </div>

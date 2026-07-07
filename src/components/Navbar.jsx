@@ -7,7 +7,7 @@ export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [theme, setTheme] = useState(localStorage.getItem('activecoupons_theme') || 'dark');
+  const [theme, setTheme] = useState(localStorage.getItem('grabcoupon_theme') || 'dark');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export default function Navbar() {
   const toggleTheme = () => {
     const nextTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(nextTheme);
-    localStorage.setItem('activecoupons_theme', nextTheme);
+    localStorage.setItem('grabcoupon_theme', nextTheme);
   };
 
   return (
@@ -78,7 +78,7 @@ export default function Navbar() {
             <Ticket size={24} style={{ transform: 'rotate(-10deg)', color: '#fff' }} />
           </div>
           <span style={{ fontFamily: 'var(--font-headings)' }}>
-            Active<span style={{ color: 'var(--accent)' }}>Coupons</span>
+            Grab<span style={{ color: 'var(--accent)' }}>Coupon</span>
           </span>
         </Link>
 

@@ -1,71 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://activecoupons.com/</loc>
+    <loc>https://grabcoupon.com/</loc>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://activecoupons.com/about</loc>
+    <loc>https://grabcoupon.com/about</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://activecoupons.com/contact</loc>
+    <loc>https://grabcoupon.com/contact</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://activecoupons.com/terms</loc>
+    <loc>https://grabcoupon.com/terms</loc>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://activecoupons.com/privacy</loc>
+    <loc>https://grabcoupon.com/privacy</loc>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://activecoupons.com/cookies</loc>
+    <loc>https://grabcoupon.com/cookies</loc>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://activecoupons.com/disclaimer</loc>
+    <loc>https://grabcoupon.com/disclaimer</loc>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://activecoupons.com/brand/amazon-coupons</loc>
+    <loc>https://grabcoupon.com/brand/amazon-coupons</loc>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://activecoupons.com/brand/flipkart-coupons</loc>
+    <loc>https://grabcoupon.com/brand/flipkart-coupons</loc>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://activecoupons.com/brand/myntra-coupons</loc>
+    <loc>https://grabcoupon.com/brand/myntra-coupons</loc>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://activecoupons.com/brand/ajio-coupons</loc>
+    <loc>https://grabcoupon.com/brand/ajio-coupons</loc>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://activecoupons.com/brand/nike-coupons</loc>
+    <loc>https://grabcoupon.com/brand/nike-coupons</loc>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://activecoupons.com/brand/adidas-coupons</loc>
+    <loc>https://grabcoupon.com/brand/adidas-coupons</loc>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://activecoupons.com/brand/samsung-coupons</loc>
+    <loc>https://grabcoupon.com/brand/samsung-coupons</loc>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://activecoupons.com/brand/boat-coupons</loc>
+    <loc>https://grabcoupon.com/brand/boat-coupons</loc>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://activecoupons.com/brand/swiggy-coupons</loc>
+    <loc>https://grabcoupon.com/brand/swiggy-coupons</loc>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://activecoupons.com/brand/zomato-coupons</loc>
+    <loc>https://grabcoupon.com/brand/zomato-coupons</loc>
     <priority>0.9</priority>
   </url>
 </urlset>
