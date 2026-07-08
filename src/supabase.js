@@ -8,6 +8,14 @@ export const isUsingMock = !supabaseUrl || !supabaseAnonKey;
 // Real Supabase Client (if keys exist)
 export const supabase = !isUsingMock ? createClient(supabaseUrl, supabaseAnonKey) : null;
 
+console.log('GrabCoupon Database Config:', {
+  hasUrl: !!supabaseUrl,
+  urlLength: supabaseUrl ? supabaseUrl.length : 0,
+  hasAnonKey: !!supabaseAnonKey,
+  anonKeyLength: supabaseAnonKey ? supabaseAnonKey.length : 0,
+  isUsingMock: isUsingMock
+});
+
 // Brands list constant
 export const BRANDS = [
   'Amazon', 'Flipkart', 'Myntra', 'Ajio', 'Nike', 
