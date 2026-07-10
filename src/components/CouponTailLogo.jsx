@@ -15,14 +15,25 @@ export function CouponTailIcon({ size = 24, className = '', style = {} }) {
       className={className}
       style={{ display: 'inline-block', ...style }}
     >
-      {/* Ticket Base Shape with perforated cutout */}
-      <path d="M2 7a2 2 0 0 1 2-2h10a2 2 0 0 0 2 2 2 2 0 0 0 2-2h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2a2 2 0 0 0-2-2 2 2 0 0 0-2 2H4a2 2 0 0 1-2-2V7z" />
+      {/* Sleek, stylized fox tail swoosh */}
+      <path 
+        d="M 4 20 C 8 20, 13 18, 17 13 C 21 8, 20.5 4.5, 17 3 C 14 1.7, 11.5 4, 10.5 7.5 C 9.5 11, 10.5 14, 13 16 C 15 17.5, 17.5 17, 19 15.5" 
+        strokeWidth="2.1"
+      />
       
-      {/* Stylized animal tail swoosh curving from the right side */}
-      <path d="M15 12c2.5 0 5-1.5 5-4.5s-2.5-4.5-4.5-2.5C13.5 7 12 10.5 11.5 12.5" strokeWidth="1.5" />
+      {/* Signature white-tip divider for the fox tail */}
+      <path 
+        d="M 15.2 3.8 C 16.2 4.8, 17.2 6.3, 17.2 7.8" 
+        strokeWidth="1.5"
+        strokeDasharray="2 2"
+      />
       
-      {/* Perforation line */}
-      <line x1="8" y1="9" x2="8" y2="15" strokeDasharray="2 2" />
+      {/* Nested ticket/coupon badge inside the tail base with custom cutouts */}
+      <path 
+        d="M 5.5 11.2 h 5 a 0.75 0.75 0 0 1 0.75 0.75 v 0.5 a 0.75 0.75 0 0 0 0 1.5 v 0.5 a 0.75 0.75 0 0 1 -0.75 0.75 h -5 a 0.75 0.75 0 0 1 -0.75 -0.75 v -0.5 a 0.75 0.75 0 0 0 0 -1.5 v -0.5 a 0.75 0.75 0 0 1 0.75 -0.75 z"
+        transform="rotate(-20 8 13)"
+        strokeWidth="1.6"
+      />
     </svg>
   );
 }
@@ -32,12 +43,12 @@ export function CouponTailLogo({ size = 24, style = {}, textStyle = {} }) {
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', ...style }}>
       <div style={{
         background: 'var(--accent)',
-        padding: '0.4rem',
-        borderRadius: '0.5rem',
+        padding: '0.45rem',
+        borderRadius: '0.6rem',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        boxShadow: '0 4px 10px rgba(99, 102, 241, 0.3)',
+        boxShadow: '0 4px 12px rgba(99, 102, 241, 0.35)',
         color: '#fff'
       }}>
         <CouponTailIcon size={size} style={{ transform: 'rotate(-5deg)' }} />
@@ -47,6 +58,7 @@ export function CouponTailLogo({ size = 24, style = {}, textStyle = {} }) {
         fontWeight: 800, 
         fontSize: '1.5rem', 
         color: 'var(--text-primary)',
+        letterSpacing: '-0.02em',
         ...textStyle 
       }}>
         Coupon<span style={{ color: 'var(--accent)' }}>Tail</span>
