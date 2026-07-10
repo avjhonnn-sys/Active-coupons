@@ -72,7 +72,7 @@ export default function AdminLogin() {
           </div>
           <h2 style={{ color: '#fff', fontSize: '1.5rem', marginBottom: '0.25rem' }}>Admin Portal</h2>
           <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
-            Log in to manage GrabCoupon coupons
+            Log in to manage CouponTail coupons
           </p>
         </div>
 
@@ -87,7 +87,7 @@ export default function AdminLogin() {
             borderRadius: '0.5rem',
             lineHeight: '1.4'
           }}>
-            <span style={{ fontWeight: 'bold' }}>Mock Mode active:</span> Use email <strong>admin@grabcoupon.com</strong> and password <strong>password</strong> or <strong>admin123</strong> to log in.
+            <span style={{ fontWeight: 'bold' }}>Mock Mode active:</span> Use email <strong>admin@coupontail.com</strong> and password <strong>password</strong> or <strong>admin123</strong> to log in.
           </div>
         )}
 
@@ -125,7 +125,7 @@ export default function AdminLogin() {
                 id="email"
                 type="email" 
                 className="form-control"
-                placeholder="admin@grabcoupon.com"
+                placeholder="admin@coupontail.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required

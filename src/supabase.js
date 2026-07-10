@@ -8,7 +8,7 @@ export const isUsingMock = !supabaseUrl || !supabaseAnonKey;
 // Real Supabase Client (if keys exist)
 export const supabase = !isUsingMock ? createClient(supabaseUrl, supabaseAnonKey) : null;
 
-console.log('GrabCoupon Database Config:', {
+console.log('CouponTail Database Config:', {
   hasUrl: !!supabaseUrl,
   urlLength: supabaseUrl ? supabaseUrl.length : 0,
   hasAnonKey: !!supabaseAnonKey,
@@ -172,17 +172,17 @@ const INITIAL_BRANDS = [
 
 // Seed localStorage if empty
 if (isUsingMock) {
-  if (!localStorage.getItem('GrabCoupon_coupons')) {
-    localStorage.setItem('GrabCoupon_coupons', JSON.stringify(INITIAL_COUPONS));
+  if (!localStorage.getItem('CouponTail_coupons')) {
+    localStorage.setItem('CouponTail_coupons', JSON.stringify(INITIAL_COUPONS));
   }
-  if (!localStorage.getItem('GrabCoupon_brands')) {
-    localStorage.setItem('GrabCoupon_brands', JSON.stringify(INITIAL_BRANDS));
+  if (!localStorage.getItem('CouponTail_brands')) {
+    localStorage.setItem('CouponTail_brands', JSON.stringify(INITIAL_BRANDS));
   }
-  if (!localStorage.getItem('GrabCoupon_submissions')) {
-    localStorage.setItem('GrabCoupon_submissions', JSON.stringify([]));
+  if (!localStorage.getItem('CouponTail_submissions')) {
+    localStorage.setItem('CouponTail_submissions', JSON.stringify([]));
   }
-  if (!localStorage.getItem('GrabCoupon_session')) {
-    localStorage.setItem('GrabCoupon_session', null);
+  if (!localStorage.getItem('CouponTail_session')) {
+    localStorage.setItem('CouponTail_session', null);
   }
 }
 
@@ -196,9 +196,9 @@ export const db = {
       return data;
     } else {
       // Mock Admin Login (Accepts any email and password 'admin123' or 'password')
-      if (email === 'admin@grabcoupon.com' && (password === 'admin123' || password === 'password')) {
+      if (email === 'admin@coupontail.com' && (password === 'admin123' || password === 'password')) {
         const session = { user: { email, id: 'admin-uid' }, access_token: 'mock-token' };
-        localStorage.setItem('GrabCoupon_session', JSON.stringify(session));
+        localStorage.setItem('CouponTail_session', JSON.stringify(session));
         return session;
       } else {
         throw new Error('Invalid login credentials.');
@@ -211,7 +211,7 @@ export const db = {
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
     } else {
-      localStorage.setItem('GrabCoupon_session', null);
+      localStorage.setItem('CouponTail_session', null);
     }
   },
 
@@ -220,7 +220,7 @@ export const db = {
       const { data: { session } } = await supabase.auth.getSession();
       return session;
     } else {
-      const session = localStorage.getItem('GrabCoupon_session');
+      const session = localStorage.getItem('CouponTail_session');
       return session ? JSON.parse(session) : null;
     }
   },
@@ -235,7 +235,7 @@ export const db = {
       if (error) throw error;
       return data;
     } else {
-      const coupons = JSON.parse(localStorage.getItem('GrabCoupon_coupons') || '[]');
+      const coupons = JSON.parse(localStorage.getItem('CouponTail_coupons') || '[]');
       // Sort by created_at descending
       return coupons.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
     }
@@ -341,7 +341,7 @@ export const db = {
       }
     } else {
       // Mock Storage Save
-      const coupons = JSON.parse(localStorage.getItem('GrabCoupon_coupons') || '[]');
+      const coupons = JSON.parse(localStorage.getItem('CouponTail_coupons') || '[]');
 
       // Check duplicates in localStorage
       if (formattedCoupon.coupon_code) {
@@ -363,7 +363,7 @@ export const db = {
           ...coupons[index],
           ...formattedCoupon,
         };
-        localStorage.setItem('GrabCoupon_coupons', JSON.stringify(coupons));
+        localStorage.setItem('CouponTail_coupons', JSON.stringify(coupons));
         return coupons[index];
       } else {
         // Add Mode
@@ -373,7 +373,7 @@ export const db = {
           created_at: new Date().toISOString()
         };
         coupons.push(newCoupon);
-        localStorage.setItem('GrabCoupon_coupons', JSON.stringify(coupons));
+        localStorage.setItem('CouponTail_coupons', JSON.stringify(coupons));
         return newCoupon;
       }
     }
@@ -387,9 +387,9 @@ export const db = {
         .eq('id', id);
       if (error) throw error;
     } else {
-      const coupons = JSON.parse(localStorage.getItem('GrabCoupon_coupons') || '[]');
+      const coupons = JSON.parse(localStorage.getItem('CouponTail_coupons') || '[]');
       const filtered = coupons.filter(c => c.id !== id);
-      localStorage.setItem('GrabCoupon_coupons', JSON.stringify(filtered));
+      localStorage.setItem('CouponTail_coupons', JSON.stringify(filtered));
     }
   },
 
@@ -415,13 +415,13 @@ export const db = {
       if (error) throw error;
       return data;
     } else {
-      const submissions = JSON.parse(localStorage.getItem('GrabCoupon_submissions') || '[]');
+      const submissions = JSON.parse(localStorage.getItem('CouponTail_submissions') || '[]');
       const newSubmission = {
         ...submission,
         id: 'sub-' + Math.random().toString(36).substr(2, 9)
       };
       submissions.push(newSubmission);
-      localStorage.setItem('GrabCoupon_submissions', JSON.stringify(submissions));
+      localStorage.setItem('CouponTail_submissions', JSON.stringify(submissions));
       return newSubmission;
     }
   },
@@ -436,7 +436,7 @@ export const db = {
       if (error) throw error;
       return data;
     } else {
-      return JSON.parse(localStorage.getItem('GrabCoupon_brands') || '[]');
+      return JSON.parse(localStorage.getItem('CouponTail_brands') || '[]');
     }
   },
 
@@ -450,7 +450,7 @@ export const db = {
       if (error) throw error;
       return data;
     } else {
-      const brands = JSON.parse(localStorage.getItem('GrabCoupon_brands') || '[]');
+      const brands = JSON.parse(localStorage.getItem('CouponTail_brands') || '[]');
       const brand = brands.find(b => b.brand_slug.toLowerCase() === slug.toLowerCase());
       if (!brand) throw new Error('Brand not found.');
       return brand;
@@ -472,7 +472,7 @@ export const db = {
       if (error) throw error;
       return data;
     } else {
-      const brands = JSON.parse(localStorage.getItem('GrabCoupon_brands') || '[]');
+      const brands = JSON.parse(localStorage.getItem('CouponTail_brands') || '[]');
       const index = brands.findIndex(b => b.brand_slug.toLowerCase() === brandData.brand_slug.toLowerCase());
       if (index === -1) throw new Error('Brand not found.');
       brands[index] = {
@@ -481,7 +481,7 @@ export const db = {
         logo_url: brandData.logo_url,
         custom_faq: brandData.custom_faq
       };
-      localStorage.setItem('GrabCoupon_brands', JSON.stringify(brands));
+      localStorage.setItem('CouponTail_brands', JSON.stringify(brands));
       return brands[index];
     }
   }

@@ -48,7 +48,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    document.title = 'GrabCoupon - Real Deals. Real Savings. Every Day.';
+    document.title = 'CouponTail - Real Deals. Real Savings. Every Day.';
   }, []);
 
   // Filter logic

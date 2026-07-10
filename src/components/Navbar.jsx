@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Ticket, ChevronDown, ShieldCheck, Sun, Moon, Menu, X } from 'lucide-react';
 import { BRANDS, isUsingMock, db } from '../supabase';
+import { CouponTailLogo } from './CouponTailLogo';
 
 export default function Navbar() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [theme, setTheme] = useState(localStorage.getItem('grabcoupon_theme') || 'dark');
+  const [theme, setTheme] = useState(localStorage.getItem('coupontail_theme') || 'dark');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -44,7 +45,7 @@ export default function Navbar() {
   const toggleTheme = () => {
     const nextTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(nextTheme);
-    localStorage.setItem('grabcoupon_theme', nextTheme);
+    localStorage.setItem('coupontail_theme', nextTheme);
   };
 
   return (
@@ -65,21 +66,8 @@ export default function Navbar() {
         position: 'relative'
       }}>
         {/* Logo */}
-        <Link to="/" onClick={() => setMenuOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, fontSize: '1.5rem', color: 'var(--text-primary)' }}>
-          <div style={{
-            background: 'var(--accent)',
-            padding: '0.4rem',
-            borderRadius: '0.5rem',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            boxShadow: '0 4px 10px rgba(99, 102, 241, 0.3)'
-          }}>
-            <Ticket size={24} style={{ transform: 'rotate(-10deg)', color: '#fff' }} />
-          </div>
-          <span style={{ fontFamily: 'var(--font-headings)' }}>
-            Grab<span style={{ color: 'var(--accent)' }}>Coupon</span>
-          </span>
+        <Link to="/" onClick={() => setMenuOpen(false)}>
+          <CouponTailLogo />
         </Link>
 
         {/* Links & Menu Items Container */}

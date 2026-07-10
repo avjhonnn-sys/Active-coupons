@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Ticket } from 'lucide-react';
+import { CouponTailLogo } from './CouponTailLogo';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -25,18 +25,7 @@ export default function Footer() {
         }}>
           {/* Brand Info */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, fontSize: '1.25rem', color: '#fff' }}>
-              <div style={{
-                background: 'var(--accent)',
-                padding: '0.3rem',
-                borderRadius: '0.4rem',
-                display: 'flex',
-                alignItems: 'center'
-              }}>
-                <Ticket size={18} style={{ transform: 'rotate(-10deg)', color: '#fff' }} />
-              </div>
-              <span style={{ fontFamily: 'var(--font-headings)' }}>GrabCoupon</span>
-            </div>
+            <CouponTailLogo size={18} style={{ marginBottom: '1rem' }} textStyle={{ fontSize: '1.25rem' }} />
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: '1.6' }}>
               Your premier destination for verified discount codes, coupons, and promo codes from top brands. Shop smart, save more.
             </p>
@@ -74,7 +63,7 @@ export default function Footer() {
           color: 'var(--text-secondary)',
           gap: '1rem'
         }}>
-          <span>&copy; {currentYear} GrabCoupon. All rights reserved. Independently run.</span>
+          <span>&copy; {currentYear} CouponTail. All rights reserved. Independently run.</span>
           <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
             Created with passion to help you save money.
           </span>
