@@ -1,5 +1,6 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import ReactGA from 'react-ga4';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -15,9 +16,35 @@ import {
   CookiePolicyPage 
 } from './pages/StaticPages';
 
+// Fetch Google Analytics Measurement ID from environment
+const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
+
+// Initialize GA4 only if Measurement ID is set
+if (GA_MEASUREMENT_ID) {
+  ReactGA.initialize(GA_MEASUREMENT_ID);
+}
+
+// Helper component to track client-side page view hits on route change
+function AnalyticsTracker() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (GA_MEASUREMENT_ID) {
+      ReactGA.send({ 
+        hitType: 'pageview', 
+        page: location.pathname + location.search,
+        title: document.title
+      });
+    }
+  }, [location]);
+
+  return null;
+}
+
 export default function App() {
   return (
     <Router>
+      <AnalyticsTracker />
       <div className="app-container">
         {/* Navigation header */}
         <Navbar />

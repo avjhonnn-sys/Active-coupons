@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactGA from 'react-ga4';
 import { Calendar, Copy, Check, ExternalLink, Award } from 'lucide-react';
 
 const BRAND_COLORS = {
@@ -79,6 +80,12 @@ export default function CouponCard({ coupon }) {
       navigator.clipboard.writeText(coupon.coupon_code);
       setCopied(true);
       triggerConfetti();
+      
+      if (import.meta.env.VITE_GA_MEASUREMENT_ID) {
+        ReactGA.event('copy_coupon_code', {
+          brand_name: coupon.brand
+        });
+      }
       setTimeout(() => setCopied(false), 1500);
     }
     
